@@ -34,4 +34,38 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def is_prime(number):
+    """
+    Checks if a given number is prime.
+    Returns True if prime, False otherwise.
+    """
+    # Numbers less than 2 are not prime
+    if number < 2:
+        return False
+    
+    # Check for factors from 2 up to the square root of the number
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
+            return False  # Found a divisor, so it's not prime
+            
+    return True  # No divisors found, it is prime
 
+def main():
+    # Get input from the user
+    user_input = input("Enter a number: ")
+    
+    try:
+        num = int(user_input)
+        
+        # Call the function and print the result based on the return value
+        if is_prime(num):
+            print(f"{num} is a prime number.")
+        else:
+            print(f"{num} is NOT a prime number.")
+            
+    except ValueError:
+        print("Invalid input. Please enter a whole number.")
+
+# This ensures the main() function runs when the script is executed directly
+if __name__ == "__main__":
+    main()
