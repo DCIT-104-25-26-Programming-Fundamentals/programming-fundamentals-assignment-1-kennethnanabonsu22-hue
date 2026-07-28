@@ -54,4 +54,70 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 6
+# Topic: Loops and Functions
+# =============================================================================
 
+def print_single_table(number: int) -> None:
+    """Prints the multiplication table for a single number from 1 to 12."""
+    print(f"Multiplication Table for {number}:")
+    for i in range(1, 13):
+        # We use {i:<2} to left-align the multiplier in a 2-character space.
+        # This ensures the '=' signs line up perfectly for 1-9 and 10-12.
+        print(f"{number}  x  {i:<2} =  {number * i}")
+
+def print_tables_up_to_n(n: int) -> None:
+    """Prints the multiplication tables for every number from 1 to n."""
+    for i in range(1, n + 1):
+        print_single_table(i)
+        # Print the separator line between tables, but not after the very last one
+        if i < n:
+            print("-" * 27)
+
+def get_positive_integer(prompt: str):
+    """
+    Helper function to handle input validation.
+    Returns the integer if valid, or None if the user enters an invalid value.
+    """
+    try:
+        val = int(input(prompt))
+        if val <= 0:
+            print("Error: Please enter a positive integer greater than 0.")
+            return None
+        return val
+    except ValueError:
+        print("Error: Invalid input. Please enter a whole number.")
+        return None
+
+def main():
+    # -----------------------------------------------------------------------------
+    # PART A — Single Table
+    # -----------------------------------------------------------------------------
+    print("=" * 45)
+    print("PART A — Single Table")
+    print("=" * 45)
+    
+    num_a = get_positive_integer("Enter a number: ")
+    if num_a is None:
+        return  # Stop the program if the input was invalid
+        
+    print()
+    print_single_table(num_a)
+    
+    # -----------------------------------------------------------------------------
+    # PART B — Bonus: Tables from 1 to N
+    # -----------------------------------------------------------------------------
+    print("\n" + "=" * 45)
+    print("PART B — Bonus: Tables from 1 to N")
+    print("=" * 45)
+    
+    n = get_positive_integer("Enter a number N: ")
+    if n is None:
+        return  # Stop the program if the input was invalid
+        
+    print()
+    print_tables_up_to_n(n)
+
+if __name__ == "__main__":
+    main()
