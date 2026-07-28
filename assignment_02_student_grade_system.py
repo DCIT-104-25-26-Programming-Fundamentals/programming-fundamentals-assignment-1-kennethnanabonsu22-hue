@@ -45,3 +45,49 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def get_grade(score):
+    """
+    Determines the letter grade based on the student's score.
+    Returns None if the score is outside the valid 0-100 range.
+    """
+    # Validate the score range
+    if score < 0 or score > 100:
+        return None
+    
+    # Determine the grade using if/elif/else
+    if score >= 80:
+        return 'A'
+    elif score >= 70:
+        return 'B'
+    elif score >= 60:
+        return 'C'
+    elif score >= 50:
+        return 'D'
+    else:
+        return 'F'
+
+def main():
+    """
+    Main function to handle user input, call get_grade(), and display the result.
+    """
+    try:
+        # Get input from the user and convert to an integer
+        user_input = input("Enter student score (0-100): ")
+        score = int(user_input)
+        
+        # Call the function to get the grade
+        grade = get_grade(score)
+        
+        # Check if the grade is None (invalid score) and print the corresponding message
+        if grade is None:
+            print("Error: Score must be between 0 and 100.")
+        else:
+            print(f"Grade: {grade}")
+            
+    except ValueError:
+        # Handle cases where the user enters non-numeric input
+        print("Error: Invalid input. Please enter a numeric score.")
+
+# This ensures the main() function runs when the script is executed directly
+if __name__ == "__main__":
+    main()
